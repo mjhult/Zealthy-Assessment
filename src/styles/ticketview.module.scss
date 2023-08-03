@@ -1,0 +1,36 @@
+.ticket {
+  display: grid;
+  height: 100svh;
+  width: 100vw;
+  grid-template-rows: 0.15fr 1fr 0.3fr;
+  overflow: scroll;
+
+  header {
+    text-align: center;
+    grid-area: 1;
+    width: 100vw;
+
+    h1 {
+      overflow-wrap: break-word;
+      width: 100%;
+    }
+
+    a {
+      margin: auto 1em;
+    }
+  }
+
+  .messages {
+    grid-area: 2;
+    overflow-y: scroll;
+  }
+  form {
+    justify-self: center;
+    align-self: center;
+    grid-area: 3;
+
+    textarea {
+      width: 98%;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.tickets {
+  height: 100svh;
+  width: 100vw;
+  overflow-y: scroll !important;
+
+  header,
+  p {
+    text-align: center;
+  }
+}

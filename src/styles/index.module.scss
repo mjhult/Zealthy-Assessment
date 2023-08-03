@@ -1,0 +1,49 @@
+.main {
+  * {
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 30em;
+    min-width: fit-content;
+    margin: 2em auto;
+
+    input {
+      height: 2em;
+      max-width: 20em;
+    }
+
+    textarea {
+      height: 20em;
+      width: 95%;
+      resize: none;
+    }
+
+    input,
+    textarea {
+      margin: 2px auto;
+    }
+  }
+
+  :nth-child(-n + 4):valid {
+    border-color: green;
+  }
+
+  @media screen and (max-width: 600px) {
+    form {
+      width: 20em;
+
+      // All except for the last one.
+      input:nth-child(-n + 3) {
+        width: 90%;
+      }
+
+      textarea {
+        height: 20em;
+        width: 90%;
+      }
+    }
+  }
+}
