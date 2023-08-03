@@ -1,0 +1,21 @@
+version: '3'
+services:
+  next:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: 'zealthy-next'
+    environment:
+      - DATABASE_URL=postgres://admin:admin@postgres-db/zealthy
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres-db
+
+  postgres-db:
+    image: postgres
+    container_name: zealthy-postgres
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=zealthy
