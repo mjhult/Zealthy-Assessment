@@ -1,0 +1,28 @@
+.ticket {
+  display: flex;
+  width: 90%;
+  margin: 1em auto;
+
+  border: solid rgba(0, 0, 0, 0.1) 1px;
+  border-radius: 8px;
+  box-shadow: 10px 10px 26px -2px rgba(0, 0, 0, 0.21);
+  background-color: white;
+
+  h1,
+  h2 {
+    padding: 5px;
+  }
+
+  h1 {
+    flex-grow: 1;
+  }
+
+  h2 {
+    text-align: right;
+  }
+}
+
+.ticket:hover {
+  transition: all 150ms ease-in-out;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
