@@ -3,12 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "yarn db:build && next dev",
+    "build": "yarn db:build && next build",
+    "start": "yarn build && next start",
+    "lint": "next lint",
+    "docker:build": "docker build -t \"zealthy-assessnent\" -f Dockerfile .",
+    "docker:compose": "docker-compose up",
+    "docker:start": "docker-compose build && yarn docker:compose",
+    "db:build": "yarn db:format && yarn db:generate && yarn db:push",
+    "db:format": "prisma format",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push"
   },
   "dependencies": {
+    "@prisma/client": "5.0.0",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
@@ -16,7 +24,12 @@
     "eslint-config-next": "13.4.12",
     "next": "13.4.12",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.1.6"
-  }
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "sass": "^1.64.2",
+    "typescript": "5.1.6",
+    "prisma": "^5.0.0"
+  },
+  "packageManager": "yarn@3.6.1"
 }
