@@ -48,32 +48,35 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <h1>Awesome Support</h1>
-        <p>Create a ticket</p>
+        <h1>Awesome Support Help Desk</h1>
         <form onSubmit={formSubmit}>
           <input
             required
             autoFocus
             type='email'
             name='email'
-            placeholder='Email'
+            aria-label='Please enter your email'
+            placeholder='Please enter your email'
           />
           <input
             required
             type='text'
             name='full-name'
-            placeholder='Full Name'
+            aria-label='Please enter your full name'
+            placeholder='Please enter your full name'
           />
           <input
             required
             type='text'
             name='issue-title'
-            placeholder='Subject'
+            aria-label='Please enter the subject of your ticket.'
+            placeholder='What is the problem?'
           />
           <textarea
             required
             name='message'
-            placeholder='Description of your error'
+            aria-label='Please enter an in-depth description of your issue.'
+            placeholder='Please describe your issue.'
             cols={23}
             rows={5}
           />
