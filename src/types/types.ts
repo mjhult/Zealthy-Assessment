@@ -24,3 +24,7 @@ export type ErrorState = {
   didError: boolean | null;
   message: string;
 };
+
+export type GenericGroup<T> = {
+  [groupName: string]: T;
+};
