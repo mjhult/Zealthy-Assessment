@@ -37,9 +37,9 @@ export default function Admin(
       </Head>
       <main className={`${styles.tickets} ${inter.className}`}>
         <header>
-          <h1>Tickets</h1>
+          <h1>All Tickets</h1>
           <button onClick={() => setShowResolved(!showResolved)}>
-            {showResolved ? 'Hide' : 'Show'} resolved?
+            {showResolved ? 'Hide' : 'Show'} resolved
           </button>
         </header>
         <section className={`${styles['tickets-container']}`}>
