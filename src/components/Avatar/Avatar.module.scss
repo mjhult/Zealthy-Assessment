@@ -1,0 +1,20 @@
+@import '../../styles/_colors.scss';
+
+.avatar {
+  background-color: #bfc1ed;
+  display: flex;
+  width: 4em;
+  height: 4em;
+  aspect-ratio: 1/1;
+  margin: 1em;
+  border-radius: 100%;
+
+  // I don't like how these are all marked as "important" but the styles for the Message component kept overwriting these.
+  p {
+    color: black !important;
+    text-align: center !important;
+    margin: auto !important;
+    font-size: 2em !important;
+    font-weight: 600 !important;
+  }
+}
