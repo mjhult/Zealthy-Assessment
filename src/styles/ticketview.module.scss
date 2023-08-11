@@ -1,22 +1,42 @@
+@import './colors';
 .ticket {
   display: grid;
   height: 100svh;
   width: 100vw;
-  grid-template-rows: 0.15fr 1fr 0.3fr;
-  overflow: scroll;
+  grid-template-columns: 80vw;
+  grid-template-rows: 0.25fr 1fr 0.15fr;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
 
   header {
     text-align: center;
     grid-area: 1;
-    width: 100vw;
+    // width: 100vw;
 
-    h1 {
-      overflow-wrap: break-word;
-      width: 100%;
+    .title {
+      display: flex;
+      flex-direction: row-reverse;
+
+      h1 {
+        overflow-wrap: break-word;
+        flex-grow: 1;
+        // margin: auto;
+        // background-color: red;
+      }
+
+      a {
+        margin: auto 1em;
+        color: $secondary;
+        font-size: 1em;
+        text-decoration: none;
+        transform: scaleY(2.5) scale(1.5);
+      }
     }
 
-    a {
-      margin: auto 1em;
+    select {
+      border: none;
+      font-size: 1.3rem;
     }
   }
 
@@ -24,13 +44,54 @@
     grid-area: 2;
     overflow-y: scroll;
   }
+
   form {
+    grid-area: 3;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    // background-color: red;
     justify-self: center;
     align-self: center;
-    grid-area: 3;
 
     textarea {
-      width: 98%;
+      // height: 3em;
+      height: 100%;
+      width: 80%;
+      flex-grow: 1;
+      transition: all 300ms ease-in-out;
+    }
+
+    input {
+      position: fixed;
+      width: 3em;
+      height: 3em;
+      flex-basis: 3em;
+      aspect-ratio: 1/1;
+      bottom: 0px;
+      right: 10vw;
+    }
+  }
+
+  @media screen and (max-width: 600px),
+    screen and (max-height: 600px) and (orientation: landscape) {
+    grid-template-columns: 100vw;
+
+    form {
+      textarea {
+        height: 3em;
+        width: 80%;
+        margin: auto;
+        margin-left: 1em;
+      }
+      input {
+        position: static;
+        margin: auto 1em;
+      }
+
+      textarea:focus {
+        height: 10em;
+      }
     }
   }
 }
