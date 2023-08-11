@@ -1,0 +1,11 @@
+.message {
+  display: flex;
+
+  p {
+    flex-grow: 1;
+    text-align: left;
+    text-overflow: ellipsis;
+    height: fit-content;
+    align-self: center;
+  }
+}

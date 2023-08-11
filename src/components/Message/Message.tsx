@@ -1,16 +1,14 @@
 import { FC } from 'react';
 import { Message } from '@/types/types';
 
-import styles from './Message.module.css';
+import styles from './Message.module.scss';
+import Avatar from '../Avatar/Avatar';
 
 const Message: FC<{ message: Message }> = ({ message }) => {
-  const { author, message: content, sentOn } = message;
-
+  const { author, message: content } = message;
   return (
     <div className={`${styles.message}`}>
-      <h4>
-        {author} @ {new Date(sentOn).toDateString()}
-      </h4>
+      <Avatar userName={author} />
       <p>{content}</p>
     </div>
   );
