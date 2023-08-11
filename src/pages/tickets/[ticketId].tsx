@@ -4,10 +4,16 @@ import { ResponseOTW, Ticket } from '@/types/types';
 
 import Head from 'next/head';
 import Link from 'next/link';
+import MessageGroup from '@/containers/MessageGroup/MessageGroup';
+import AvatarGroup from '@/containers/AvatarGroup/AvatarGroup';
 import DynamicMessage from '@/components/DynamicMessage/DynamicMessage';
-import Message from '@/components/Message/Message';
+
+import { getTicketParticipants, groupMessagesByDate } from '@/lib/helpers';
 
 import styles from '@/styles/ticketview.module.scss';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
 
 type UpdateTicket = {
   message?: string;
@@ -70,14 +76,19 @@ export default function TicketView(
         <title>Manage Some Awesome Tickets</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-      <main className={`${styles.ticket}`}>
-        <header className={`${styles.header}`}>
-          <h1 hidden={!error.didError} aria-hidden={!error.didError}>
-            {error.message || 'An error occured while loading ticket.'}
-          </h1>
-          <h1 hidden={error.didError} aria-hidden={error.didError}>
-            {ticket?.title} from {ticket?.author.split(' <')[0]}
-          </h1>
+      <main className={`${styles.ticket} ${inter.className}`}>
+        <header>
+          <div className={`${styles.title}`}>
+            <h1 hidden={!error.didError} aria-hidden={!error.didError}>
+              {error.message || 'An error occured while loading ticket.'}
+            </h1>
+            <h1 hidden={error.didError} aria-hidden={error.didError}>
+              {ticket?.title}
+            </h1>
+            <Link href='/tickets' aria-label='Go back'>
+              {'<'}
+            </Link>
+          </div>
 
           <select
             defaultValue={ticket?.status}
@@ -92,12 +103,9 @@ export default function TicketView(
             <option value='in-progress'>In Progress</option>
             <option value='resolved'>Resolved</option>
           </select>
-
-          <Link href='/tickets' aria-label='Go back'>
-            Back
-          </Link>
         </header>
 
+        {/* Messages  */}
         <section className={`${styles.messages}`}>
           <DynamicMessage
             didError={error.didError}
@@ -106,13 +114,21 @@ export default function TicketView(
             noItemMessage='No messages.'
           />
 
-          {messages.map((message) => (
-            <Message key={message.id} message={message} />
-          ))}
+          <AvatarGroup participants={getTicketParticipants(messages)} />
+
+          {Object.entries(groupMessagesByDate(messages)).map(
+            ([date, messages]) => (
+              <MessageGroup
+                key={Math.random()}
+                date={date}
+                messages={messages}
+              />
+            )
+          )}
         </section>
 
+        {/* Admin response */}
         <form
-          className={`${styles['send-message']}`}
           onSubmit={(event) => {
             event.preventDefault();
             const { newMessage: newMessageElement } = event.currentTarget;
@@ -126,10 +142,9 @@ export default function TicketView(
             rows={10}
             cols={50}
           />
-
           <input
             type='submit'
-            value='Send'
+            value='⌲'
             disabled={error.didError}
             aria-disabled={error.didError}
           />
