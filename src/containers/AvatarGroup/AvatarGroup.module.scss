@@ -1,0 +1,22 @@
+.avatar-group {
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  margin: auto;
+  width: 15em;
+  padding: 1em;
+
+  .participant {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: left;
+    margin: auto;
+    text-align: center;
+
+    h6 {
+      padding: 0px;
+      margin: 0px;
+    }
+  }
+}
