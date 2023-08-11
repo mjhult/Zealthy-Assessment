@@ -66,13 +66,14 @@ You'll notice a lot of my decisions were based on time commitment. This was due 
 
 ### Things I got to
 
-- ## Submitting a ticket
+- Submitting a ticket
 - An admin dashboard to view all tickets
 - A page to view the conversation and edit the details of a ticket
 - A basic (serverless) backend
   - Honestly the routes could be refactored a bit. I'm not the most proud of them and would love to have a discussion about what can be done to improve them. I have a few ideas.
 - Error handling
-- Basic styling
+- ~~Basic styling~~
+- Slightly less basic styling/UI.
   - If I had more time, I would have built a UI out in Figma and followed that.
 - Form input validation
 - SSR
