@@ -49,6 +49,10 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <h1>Awesome Support Help Desk</h1>
+        {error.didError ? <p>{error.message}</p> : null}
+        {success && !error.didError ? (
+          <p>Your ticket has been submitted!</p>
+        ) : null}
         <form onSubmit={formSubmit}>
           <input
             required
@@ -82,10 +86,6 @@ export default function Home() {
           />
           <input type='submit' value='Submit' />
         </form>
-        {error.didError ? <p>{error.message}</p> : null}
-        {success && !error.didError ? (
-          <p>Your ticket has been submitted!</p>
-        ) : null}
       </main>
     </>
   );
